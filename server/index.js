@@ -15,16 +15,15 @@ app.use(cors({
 	origin: ["http://localhost:3000"],
 	credentials: true,
 }));
-console.log("sairaj")
 
 app.listen(PORT, ()=>console.log(`The server is started at PORT : ${PORT}`));
 
 app.use(express.json());
 app.use(cookieParser());
 
-console.log(process.env)
-/*
-mongoose.connect(process.env.MDB_CONNECT,{useNewUrlParser: true, useUnifiedTopology: true}, (err)=> {
+console.log(process.env.MDB_CONNECT)
+const uri = "mongodb+srv://Sairajkodilkar:mongodb@cluster0.4iikb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+mongoose.connect(uri,{useNewUrlParser: true, useUnifiedTopology: true}, (err)=> {
     if(err) return console.error(err);
     console.log('Connected to MongoDB');
 })
@@ -40,4 +39,3 @@ app.use("/flats", require("./routers/flatRouter"));
 app.use("/chats", require('./routers/chatRouter'));
 app.use("/maintenance", require('./routers/maintenanceRouter'));
 app.use("/contact", require('./routers/contactRouter'));
-*/
