@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const Login = require('./models/userModel');
 dotenv.config();
 
 const app = express();
@@ -23,13 +24,14 @@ app.use(cookieParser());
 
 console.log(process.env.MDB_CONNECT)
 const uri = "mongodb+srv://Sairajkodilkar:mongodb@cluster0.4iikb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+//uri = "mongodb+srv://gaurav:SE7375107@apartment.cxqxa.mongodb.net/dev?retryWrites=true&w=majority"
 mongoose.connect(uri,{useNewUrlParser: true, useUnifiedTopology: true}, (err)=> {
     if(err) return console.error(err);
     console.log('Connected to MongoDB');
 })
 
+console.log(process.env.JWT_SECRET)
 
-//use Router
 
 app.use("/auth", require('./routers/userRouter'));
 app.use("/notice", require('./routers/noticeRouter'));
